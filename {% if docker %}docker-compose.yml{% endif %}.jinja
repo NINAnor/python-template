@@ -1,0 +1,20 @@
+
+
+x-app-env: &app-env
+  DEBUG: True
+
+x-app: &app
+  build:
+    context: .
+  environment:
+    <<: *app-env
+  volumes:
+    - ./src:/app/src
+  command: {{ project_slug }}_start
+  #command: python -m pdb -c continue {{ project_slug }}_start
+
+services:
+  app:
+    <<: *app
+    environment:
+      <<: *app-env

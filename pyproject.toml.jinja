@@ -1,0 +1,35 @@
+# ==== pytest ====
+[tool.pytest.ini_options]
+minversion = "6.0"
+python_files = [
+    "tests.py",
+    "test_*.py",
+]
+
+
+[project]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+dependencies = [
+    "django-environ",
+]
+requires-python = ">=3.10"
+name = "{{ project_slug }}"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "{{ author_name }}", email = "{{ email }}"},
+]
+readme = "README.md"
+license = {text = "GPL"}
+
+[project.scripts]
+"{{ project_slug }}_start" = "{{ project_slug }}.main:start"
+
+
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "W", "I", "F", "UP", "ANN", "S", "B", "A", "COM", "LOG", "PT", "PTH", "Q"]
+ignore = ["ANN003", "ANN002"]
