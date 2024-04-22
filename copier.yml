@@ -43,3 +43,14 @@ docker:
 
 _tasks:
   - "if [ ! -d \".git\" ] ; then git init -b {{ default_branch_name }} && git add . && git commit -m \"Initial commit\"; fi"
+
+_exclude:
+  - copier.yaml
+  - copier.yml
+  - "~*"
+  - "*.py[co]" 
+  - __pycache__ 
+  - .git
+  - .DS_Store
+  - .svn
+  - README.md
