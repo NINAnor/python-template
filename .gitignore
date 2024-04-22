@@ -278,5 +278,5 @@ dump.rdb
 .envs/*
 !.envs/.local/
 
-
+# Avoid committing copier update diff
 *.rej
