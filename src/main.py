@@ -2,14 +2,13 @@ import logging
 
 import environ
 
+logging.basicConfig()
 env = environ.Env()
-DEBUG = env("DEBUG", default=False)
+logging.getLogger().setLevel(env("LOG_LEVEL", default="INFO"))
 
 
 def start() -> None:
-    if DEBUG:
-        logging.debug("Debug mode active")
-
+    logging.debug("only printed with LOG_LEVEL=DEBUG")
     print("hello world!")
 
 
