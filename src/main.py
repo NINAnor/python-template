@@ -1,14 +1,19 @@
 import logging
+import pathlib
 
 import environ
 
-logging.basicConfig()
 env = environ.Env()
-logging.getLogger().setLevel(env("LOG_LEVEL", default="INFO"))
+BASE_DIR = pathlib.Path(__file__).parent.parent
+environ.Env.read_env(str(BASE_DIR / ".env"))
+
+DEBUG = env.bool("DEBUG", default=False)
+
+logging.basicConfig(level=(logging.DEBUG if DEBUG else logging.INFO))
 
 
 def start() -> None:
-    logging.debug("only printed with LOG_LEVEL=DEBUG")
+    logging.debug("only printed in DEBUG")
     print("hello world!")
 
 
