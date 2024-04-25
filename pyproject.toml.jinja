@@ -22,5 +22,5 @@ license = {text = "GPL3"}
 fix = true
 
 [tool.ruff.lint]
-select = ["E", "W", "I", "F", "UP", "ANN", "S", "B", "A", "COM", "LOG", "PT", "PTH", "Q"]
-ignore = ["ANN003", "ANN002"]
+select = ["E", "W", "I", "F", "UP", {% if type_annotations %}"ANN",{% endif %} "S", "B", "A", "COM", "LOG", "PTH", "Q"]
+{% if type_annotations %}ignore = ["ANN003", "ANN002"]{% endif %}

@@ -36,6 +36,11 @@ default_branch_name:
   default: main
   help: "Name of the default branch"
 
+type_annotations:
+  type: bool
+  default: false
+  help: "Type annotation mandatory"
+
 docker:
   type: bool
   default: true
