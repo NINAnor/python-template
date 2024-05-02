@@ -1,0 +1,29 @@
+[defaults]
+template_type = "python"
+
+[output.".ctt/python"]
+docker = true
+
+[output.".ctt/django-simple"]
+ui = false
+rest = false
+gis = false
+
+[output.".ctt/django-rest"]
+rest = true
+ui = false
+
+[output.".ctt/django-gis"]
+ui = false
+rest = false
+gis = true
+
+[output.".ctt/django-ui"]
+ui = true
+rest = false
+gis = false
+
+[output.".ctt/django-full"]
+ui = true
+rest = true
+gis = true
