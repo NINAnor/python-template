@@ -1,8 +1,0 @@
-{% extends 'python/.pre-commit-config.yaml.jinja' %}
-
-{% block repos %}- repo: https://github.com/adamchainz/django-upgrade
-    rev: '1.15.0'
-    hooks:
-      - id: django-upgrade
-        args: ['--target-version', '5.0.4']
-{% endblock %}

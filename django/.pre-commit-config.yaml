@@ -18,7 +18,6 @@ repos:
       # Prevent committing inline conflict markers
       - id: check-merge-conflict
         args: [--assume-in-merge]
-      {% block pre_commit_hooks %}{% endblock %}
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.3.5
@@ -31,7 +30,11 @@ repos:
     hooks:
     -   id: detect-secrets
 
-  {% block repos %}{% endblock %}
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: '1.15.0'
+    hooks:
+      - id: django-upgrade
+        args: ['--target-version', '5.0']
 
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
