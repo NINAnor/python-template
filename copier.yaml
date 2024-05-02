@@ -6,11 +6,11 @@ template_type:
     - django
 
 ---
-!include src/includes/shared.yml
+!include includes/shared.yml
 ---
-!include src/includes/python.yml
+!include includes/python.yml
 ---
-!include src/includes/django.yml
+!include includes/django.yml
 ---
 
 _subdirectory: "{{ template_type }}"
