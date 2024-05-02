@@ -1,0 +1,42 @@
+{% extends 'ui/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n fontawesome %}
+
+{% block content %}
+  <div class="d-flex align-items-center mb-2">
+    <h3 class="mb-0">{{ page_title }}</h3>
+    {% block tags %}
+    {% endblock tags %}
+    <div class="ms-auto">
+      <a href="../" class="btn btn-secondary">{% fa_icon icon='arrow-left' %} {% trans 'Back' %}</a>
+      {% block page_actions %}
+      {% endblock page_actions %}
+    </div>
+  </div>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      {% block pre-form %}
+        {{ pre_form_text }}
+      {% endblock pre-form %}
+      <form action="{{ form_action }}" method="{{ form_method }}">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">
+          {% block form-submit-text %}
+            {% if form_submit_text %}
+              {{ form_submit_text }}
+            {% else %}
+              {% trans 'Submit' %}
+            {% endif %}
+          {% endblock form-submit-text %}
+        </button>
+      </form>
+      {% block post-form %}
+        {{ post_form_text }}
+      {% endblock post-form %}
+    </div>
+  </div>
+  {% block extra %}
+  {% endblock extra %}
+{% endblock content %}

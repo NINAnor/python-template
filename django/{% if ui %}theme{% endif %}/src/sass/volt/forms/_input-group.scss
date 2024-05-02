@@ -1,0 +1,48 @@
+.input-group {
+    .form-control:focus {
+        border-color: $input-border-color;
+
+        & + .input-group-text {
+            border-color: $input-border-color;
+        }
+    }
+}
+
+.input-group-text{
+    @include box-shadow($input-box-shadow);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > div {
+    margin-right: 1rem;
+  }
+
+
+  .form-control, .form-select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+
+  .select2-container {
+     min-width: 14rem;
+     &.select2-container--bootstrap-5 {
+        display: inline-block;
+     }
+  }
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}

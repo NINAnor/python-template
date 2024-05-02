@@ -1,0 +1,17 @@
+{% extends 'ui/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+  <h3>{% translate 'Create' %} {{ title }}</h3>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      <form action="" method="post" enctype="multipart/form-data">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">{% trans 'Create' %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

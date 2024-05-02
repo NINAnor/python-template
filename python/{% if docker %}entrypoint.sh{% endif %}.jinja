@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+
+# Run commands to setup
+{% block setup_commands %}{% endblock setup_commands %}
+
+exec "$@"

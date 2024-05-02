@@ -1,0 +1,30 @@
+
+gis:
+  type: bool
+  default: false
+  help: "Setup to use GIS software (GDAL, GEODjango)"
+  when: "{{ template_type == 'django' }}"
+
+rest:
+  type: bool
+  default: false
+  help: "Need REST APIs"
+  when: "{{ template_type == 'django' }}"
+
+ldap:
+  type: bool
+  default: false
+  help: "LDAP Authentication"
+  when: "{{ template_type == 'django' }}"
+
+ui:
+  type: bool
+  default: "{{ not rest }}"
+  help: "Use Django for UI rendering"
+  when: "{{ template_type == 'django' }}"
+
+primary_color: 
+  type: str
+  default: "#425563"
+  when: "{{ ui and template_type == 'django' }}"
+  help: "Primary color for the theme"

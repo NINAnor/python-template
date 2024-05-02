@@ -1,0 +1,5 @@
+docker:
+  type: bool
+  default: true
+  help: "Use docker"
+  when: "{{ template_type == 'python' }}"

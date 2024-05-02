@@ -1,0 +1,85 @@
+name: Docker
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - context: .
+            target: django
+            image: ghcr.io/{{ repo_org }}/{{ repo_name }}/backend-django
+          - context: ./nginx
+            image: ghcr.io/{{ repo_org }}/{{ repo_name }}/backend-nginx
+          - context: ./docs
+            image: ghcr.io/{{ repo_org }}/{{ repo_name }}/backend-docs
+            target: prod
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: {% raw %}${{ env.REGISTRY }}{% endraw %}
+          username: {% raw %}${{ github.actor }}{% endraw %}
+          password: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: {% raw %}${{ matrix.image }}{% endraw %}
+          tags: |
+            type=ref,event=branch
+            type=sha
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: {% raw %}${{ matrix.context }}{% endraw %}
+          target: {% raw %}${{ matrix.target }}{% endraw %}
+          push: true
+          tags: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
+          labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
+
+  publish_docs:
+    if: github.ref == 'refs/heads/{{ default_branch_name }}'
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/{{ repo_org }}/{{ repo_name }}/backend-docs:{{ default_branch_name }}
+      credentials:
+        username: {% raw %}${{ github.actor }}{% endraw %}
+        password: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      # environment created automatically by GitHub
+      name: github-pages
+      url: {% raw %}${{ steps.deployment.outputs.page_url }}{% endraw %}
+
+    steps:
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "/var/www"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

@@ -1,0 +1,36 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary" aria-label="">
+  <div class="container-fluid">
+    {% block navigation %}
+    <a class="navbar-brand fw-bolder" href="{% url 'home' %}">{% block navigation_title %}{{ PROJECT_NAME }}{% endblock navigation_title %}</a>
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar-main"
+            aria-controls="navbar-main"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-main">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        {% block navigation_links %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        {% endblock navigation_links %}
+      </ul>
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+          {% include "core/partials/user-dropdown.html" %}
+        {% else %}
+          <li class="nav-item text-white">
+            <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endblock navigation %}
+  </div>
+</nav>

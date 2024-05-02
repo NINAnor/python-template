@@ -1,0 +1,8 @@
+{% load i18n fontawesome %}
+
+<li class="nav-item {% if sidenav_active_route == route %}active{% endif %}">
+    <a class="nav-link" href="{{ link }}">
+        <span class="sidebar-icon">{% fa_icon icon=icon %}</span>
+        <span class="sidebar-text">{% translate title %}</span>
+    </a>
+</li>

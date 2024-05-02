@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block body %}
+  {% include 'core/partials/navigation.html' %}
+  {# djlint:off H021 #}
+  <main style="min-height: 90vh;">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+          {{ message }}
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% block content-wrapper %}
+      <div class="container" style="min-height: 90%;">
+        {# djlint:on #}
+        {% block content %}
+        {% endblock content %}
+      </div>
+    {% endblock content-wrapper %}
+  </main>
+{% endblock body %}

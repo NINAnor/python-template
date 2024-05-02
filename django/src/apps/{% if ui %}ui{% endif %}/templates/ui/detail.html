@@ -1,0 +1,35 @@
+{% extends 'ui/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n fontawesome %}
+
+{% block content %}
+  <div class="d-flex align-items-center mb-2">
+    <h3 class="mb-0">
+      {% block content-title %}
+        {{ object }}
+      {% endblock content-title %}
+    </h3>
+    {% block tags %}
+    {% endblock tags %}
+    <div class="ms-auto d-flex">
+      <a href="../" class="btn btn-secondary">{% fa_icon icon='arrow-left' %} {% trans 'Back' %}</a>
+      {% if not prevent_delete %}
+        {# djlint:off D018 #}
+        <a href="{{ delete_url }}" class="btn btn-danger ms-2">{% fa_icon icon='trash' %} {% trans 'Delete' %}</a>
+      {% endif %}
+      {% block page_actions %}
+      {% endblock page_actions %}
+    </div>
+  </div>
+  {% block card %}
+    <div class="card border-0 shadow mb-4">
+      <div class="card-body">
+        {% block inner %}
+        {% endblock inner %}
+      </div>
+    </div>
+  {% endblock card %}
+  {% block extra %}
+  {% endblock extra %}
+{% endblock content %}

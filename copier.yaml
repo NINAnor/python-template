@@ -1,0 +1,19 @@
+
+template_type:
+  type: str
+  choices:
+    - python
+    - django
+
+---
+!include src/includes/shared.yml
+---
+!include src/includes/python.yml
+---
+!include src/includes/django.yml
+---
+
+_subdirectory: "{{ template_type }}"
+
+_tasks:
+  - "if [ ! -d \".git\" ] ; then git init -b {{ default_branch_name }} && git add . && git commit -m \"Initial commit\"; fi"

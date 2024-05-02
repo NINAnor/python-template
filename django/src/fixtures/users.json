@@ -1,0 +1,19 @@
+[
+    {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+        "password": "pbkdf2_sha256$180000$10jDVElGx6nr$0o2RbVZhcE/BAHG6pCvAX4DI8V4mjIHgnN0pdNOKkr8=",
+        "last_login": "2023-05-27T09:22:46.831Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@nina.no",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-05-27T08:35:08.845Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    }
+  ]

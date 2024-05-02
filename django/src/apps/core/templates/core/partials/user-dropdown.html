@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<li class="nav-item dropdown ms-lg-3">
+  <a class="nav-link dropdown-toggle pt-1 px-0"
+     href="#"
+     role="button"
+     data-bs-toggle="dropdown"
+     aria-expanded="false">
+    <div class="media d-flex align-items-center">
+      <div class="media-body ms-2 align-items-center d-none d-lg-block text-white">
+        <span class="mb-0 font-small {{ class }} fw-bold">{{ user }}</span>
+      </div>
+    </div>
+  </a>
+  <div class="dropdown-menu dropdown-menu-end mt-2 py-1">
+    <a class="dropdown-item d-flex align-items-center"
+       href="{% url 'users:redirect' %}">
+      My Profile
+    </a>
+    {% block user_dropdown_items %}{% endblock user_dropdown_items %}
+    {% if user.is_staff %}
+      {% block admin_dropdown_items %}{% endblock admin_dropdown_items %}
+      <a class="dropdown-item d-flex align-items-center"
+         href="{% url 'admin:index' %}">
+        Admin
+      </a>
+    {% endif %}
+    <div role="separator" class="dropdown-divider my-1"></div>
+    <a class="dropdown-item d-flex align-items-center"
+       href="{% url 'account_logout' %}">
+      Logout
+    </a>
+  </div>
+</li>

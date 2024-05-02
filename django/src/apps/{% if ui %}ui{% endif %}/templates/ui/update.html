@@ -1,0 +1,36 @@
+{% extends 'ui/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n fontawesome static %}
+
+{% block content %}
+  <div class="d-flex align-items-center mb-2">
+    <h3 class="mb-0">{{ object }}</h3>
+    {% block tags %}
+    {% endblock tags %}
+    <div class="ms-auto">
+      <a href="../" class="btn btn-secondary">{% fa_icon icon='arrow-left' %} {% trans 'Back' %}</a>
+      {% if not prevent_delete %}
+        {# djlint:off D018 #}
+        <a href="{{ delete_url }}" class="btn btn-danger ms-1">{% fa_icon icon='trash' %} {% trans 'Delete' %}</a>
+      {% endif %}
+      {% block page_actions %}
+      {% endblock page_actions %}
+    </div>
+  </div>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      <form action="" method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        {% block form_extra %}
+        {% endblock form_extra %}
+        {% if not readonly %}
+          <button type="submit" class="btn btn-primary">{% trans 'Update' %}</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+  {% block extra %}
+  {% endblock extra %}
+{% endblock content %}
