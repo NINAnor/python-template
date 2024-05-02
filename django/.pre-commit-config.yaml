@@ -34,7 +34,8 @@ repos:
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
     hooks:
-    -   id: detect-secrets
+    - id: detect-secrets
+      args: [--exclude-files=django/src/fixtures/users.json]
 
   - repo: https://github.com/adamchainz/django-upgrade
     rev: '1.15.0'
