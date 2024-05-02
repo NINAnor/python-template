@@ -1,19 +1,93 @@
-
+# Shared questions
 template_type:
   type: str
   choices:
     - python
     - django
 
----
-!include includes/shared.yml
----
-!include includes/python.yml
----
-!include includes/django.yml
----
+project_name:
+  type: str
+  default: NINA python project
+  help: "Name of the project for the humans"
+
+project_slug:
+  type: str
+  default: |-
+    {{ project_name.lower().replace(' ', '_')}}
+  help: "Name of the project for the machines, underscores instead of spaces"
+
+repo_org:
+  type: str
+  default: ninanor
+  help: "Name of the github organization hosting the code"
+
+repo_name:
+  type: str
+  default: |-
+    {{ project_slug }}
+  help: "Name of the github repository hosting the code"
+
+author_name:
+  type: str
+  default: |-
+    {{ repo_org }}
+
+email:
+  type: str
+  default: |-
+    {{ author_name.lower() | trim() |replace(' ', '.') }}@nina.no
+
+default_branch_name:
+  type: str
+  default: main
+  help: "Name of the default branch"
+
+type_annotations:
+  type: bool
+  default: false
+  help: "Type annotation mandatory"
+
+
+# Python template
+docker:
+  type: bool
+  default: true
+  help: "Use docker"
+  when: "{{ template_type == 'python' }}"
+
+
+# Django template
+gis:
+  type: bool
+  default: false
+  help: "Setup to use GIS software (GDAL, GEODjango)"
+  when: "{{ template_type == 'django' }}"
+
+rest:
+  type: bool
+  default: false
+  help: "Need REST APIs"
+  when: "{{ template_type == 'django' }}"
+
+ldap:
+  type: bool
+  default: false
+  help: "LDAP Authentication"
+  when: "{{ template_type == 'django' }}"
+
+ui:
+  type: bool
+  default: "{{ not rest }}"
+  help: "Use Django for UI rendering"
+  when: "{{ template_type == 'django' }}"
+
+primary_color:
+  type: str
+  default: "#425563"
+  when: "{{ ui and template_type == 'django' }}"
+  help: "Primary color for the theme"
 
 _subdirectory: "{{ template_type }}"
 
 _tasks:
-  - "if [ ! -d \".git\" ] ; then git init -b {{ default_branch_name }} && git add . && git commit -m \"Initial commit\"; fi"
+  - "if [ ! -d \".git\" ] ; then git init -b {{ default_branch_name }}; command -v pre-commit &> /dev/null && pre-commit install; git add .; command -v pre-commit &> /dev/null && pre-commit run --all-files && git add .; git commit -m \"Initial commit\"; fi"
