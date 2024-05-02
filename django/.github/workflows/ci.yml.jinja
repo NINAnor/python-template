@@ -41,16 +41,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup secrets
-        run: cd setup && docker compose up --build && cd ..
+        run: cp .env.example .env
 
       - name: Build the Stack
-        run: docker compose --profile dev --env-file secrets/docker build
+        run: docker compose --profile dev build
 
       - name: Run DB Migrations
-        run: docker compose --profile dev --env-file secrets/docker run --rm django-dev python manage.py migrate
+        run: docker compose --profile dev run --rm django-dev python manage.py migrate
 
       - name: Run Django Tests
-        run: docker compose --profile dev --env-file secrets/docker run django-dev pytest
+        run: docker compose --profile dev run django-dev pytest
 
       - name: Tear down the Stack
-        run: docker compose --profile dev --env-file secrets/docker down
+        run: docker compose --profile dev down
