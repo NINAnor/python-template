@@ -31,6 +31,18 @@ repos:
       - id: ruff
       - id: ruff-format
 
+  - repo: local
+    hooks:
+      # Prevent committing .rej files
+      - id: forbidden-files
+        name: forbidden files
+        entry: found Copier update rejection files
+        description:
+            review and remove .rej files before
+            merging.
+        language: fail
+        files: "\\.rej$"
+
   {% block extra %}
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
