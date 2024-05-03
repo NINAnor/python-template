@@ -1,34 +1,32 @@
 [project]
+authors = [
+    {name = "{{ author_name }}", email = "{{ email }}"},
+]
 # PEP 621 project metadata
 # See https://www.python.org/dev/peps/pep-0621/
 dependencies = [
     {% block dependencies %}"django-environ",{% endblock %}
 ]
-requires-python = ">=3.10"
-name = "{{ project_slug }}"
-version = "0.1.0"
 description = ""
-authors = [
-    {name = "{{ author_name }}", email = "{{ email }}"},
-]
-readme = "README.md"
 license = {text = "GPL-3.0+"}
+name = "{{ project_slug }}"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.0"
+
+{% block project_extra %}{% endblock %}
 
 [project.scripts]
 {% block project_scripts %}"{{ project_slug }}_start" = "main:start"{% endblock %}
 
-{% block project_extra %}
+{% block ruff_extra %}{% endblock %}
 
-{% endblock %}
-
+{% block extra %}{% endblock %}
 
 [tool.ruff]
 fix = true
 
 [tool.ruff.lint]
 select = ["E", "W", "I", "F", "UP", {% if type_annotations %}"ANN",{% endif %} "S", "B", "A", "COM", "LOG", "PTH", "Q"]
+ignore = ["COM812"]
 {% if type_annotations %}ignore = ["ANN003", "ANN002"]{% endif %}
-
-{% block ruff_extra %}{% endblock %}
-
-{% block extra %}{% endblock %}

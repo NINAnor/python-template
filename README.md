@@ -4,6 +4,7 @@ A template to fast setup python projects
 ## Requirements
 - python
 - pip
+- [pre-commit](https://pre-commit.com/)
 - pipx (optional, but recommended)
 - [copier](https://github.com/copier-org/copier)
 

@@ -1,34 +1,36 @@
 [defaults]
 template_type = "python"
 
-[output.".ctt/python"]
-docker = true
-
-[output.".ctt/django-simple"]
-template_type = "django"
-ui = false
-rest = false
-gis = false
-
-[output.".ctt/django-rest"]
-template_type = "django"
-rest = true
-ui = false
-
-[output.".ctt/django-gis"]
-template_type = "django"
-ui = false
-rest = false
-gis = true
-
-[output.".ctt/django-ui"]
-template_type = "django"
-ui = true
-rest = false
-gis = false
+[output.".ctt/defaults"]
 
 [output.".ctt/django-full"]
+gis = true
+rest = true
 template_type = "django"
 ui = true
-rest = true
+
+[output.".ctt/django-gis"]
 gis = true
+rest = false
+template_type = "django"
+ui = false
+
+[output.".ctt/django-rest"]
+rest = true
+template_type = "django"
+ui = false
+
+[output.".ctt/django-simple"]
+gis = false
+rest = false
+template_type = "django"
+ui = false
+
+[output.".ctt/django-ui"]
+gis = false
+rest = false
+template_type = "django"
+ui = true
+
+[output.".ctt/python"]
+docker = true

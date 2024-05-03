@@ -24,7 +24,6 @@
     "slippers",
     "django-tables2>=2.7.0",
     "django-autocomplete-light>=3.11.0",
-
     {%- if rest %}"dj-rest-auth",
     "django-rest-framework",
     "drf-spectacular",
@@ -36,24 +35,23 @@
 {% block project_extra %}
 
 [project.optional-dependencies]
-prod = [
-    "gunicorn",
-    "sentry-sdk>=1.40.5",
-]
-
 dev = [
-    "Werkzeug[watchdog]",
-    "ipdb",
-    "pytest",
-    "pytest-sugar",
-    "coverage",
-    "pre-commit",
-    "factory-boy",
-    "django-debug-toolbar",
-    "django-extensions",
-    "django-coverage-plugin",
-    "pytest-django",
-    "django-models2puml>=0.2",
+  "Werkzeug[watchdog]",
+  "ipdb",
+  "pytest",
+  "pytest-sugar",
+  "coverage",
+  "pre-commit",
+  "factory-boy",
+  "django-debug-toolbar",
+  "django-extensions",
+  "django-coverage-plugin",
+  "pytest-django",
+  "django-models2puml>=0.2"
+]
+prod = [
+  "gunicorn",
+  "sentry-sdk>=1.40.5"
 ]
 {% endblock %}
 
@@ -69,14 +67,16 @@ dev = [
 {% block extra %}
 # ==== pytest ====
 [tool.pytest.ini_options]
-minversion = "6.0"
 addopts = "--ds=config.settings.test --reuse-db"
+minversion = "6.0"
 python_files = [
-    "tests.py",
-    "test_*.py",
+  "tests.py",
+  "test_*.py"
 ]
 
 # ==== Coverage ====
+[tool.coverage]
+
 [tool.coverage.run]
 include = ["app/**"]
 omit = ["*/migrations/*", "*/tests/*"]

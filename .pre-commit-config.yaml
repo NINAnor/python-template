@@ -23,7 +23,7 @@ repos:
     - id: detect-secrets
       args: [--exclude-files=django/src/fixtures/users.json]
 
-  # - repo: https://github.com/KyleKing/copier-template-tester
-  #   rev: main
-  #   hooks:
-  #     - id: copier-template-tester
+  - repo: https://github.com/KyleKing/copier-template-tester
+    rev: main
+    hooks:
+      - id: copier-template-tester

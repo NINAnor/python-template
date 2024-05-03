@@ -1,0 +1,15 @@
+{% extends 'python/.pre-commit-config.yaml.jinja' %}
+
+{% block extra %}
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: '1.15.0'
+    hooks:
+      - id: django-upgrade
+        args: ['--target-version', '5.0']
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: [--exclude-files=src/fixtures/users.json]
+
+{% endblock %}

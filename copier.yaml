@@ -90,4 +90,4 @@ primary_color:
 _subdirectory: "{{ template_type }}"
 
 _tasks:
-  - "if [ ! -d \".git\" ] ; then git init -b {{ default_branch_name }}; command -v pre-commit &> /dev/null && pre-commit install; git add .; command -v pre-commit &> /dev/null && pre-commit run --all-files && git add .; git commit -m \"Initial commit\"; fi"
+  - "./init.sh {{ default_branch_name }}"

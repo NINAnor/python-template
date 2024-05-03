@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 else:
     User = None
 
+
 class UserManager(DjangoUserManager):
     """Custom manager for the User model."""
 
