@@ -4,8 +4,14 @@
 set -o errexit
 # exit on error inside pipe
 set -o pipefail
+# prevent running the script if variables are not defined
+set -o nounset
+
 # print executed commands along with their result (useful for debugging)
 # set -x
+
+INITIAL_BRANCH=${1:?"Error. You must supply the initial branch name."}
+TEMPLATE_TYPE=${2:?"Error. You must supply the template type"}
 
 # This script will setup a git repository if not present
 # And will fix formatting errors that are produced by Jinja template inheritance
@@ -22,8 +28,25 @@ run_hooks() {
     done <<< "$hooks"
 }
 
+setup_venv() {
+    if [ ! -d venv/ ]; then
+        python3 -m venv venv;
+        echo "setting up a virtual environment"
+    else
+        echo "virtual environment already present, skipping"
+    fi
+    source venv/bin/activate;
+    pip install pre-commit;
+}
+
+command -v pre-commit >/dev/null 2>&1 || { echo "pre-commit is missing"; setup_venv; }
+
 if [ -d .git/ ]; then
   echo "This project is already initialized. Running hooks"
+  if [ ! -f .git/hooks/pre-commit ]; then
+    echo "Installing hooks"
+    pre-commit install;
+  fi
   git add .;
   run_hooks;
   exit 0
@@ -40,3 +63,7 @@ pre-commit install;
 git add .;
 run_hooks;
 git commit -m "Initial commit";
+
+if [[ $2 = "python" ]]; then
+    setup_venv;
+fi

@@ -90,4 +90,4 @@ primary_color:
 _subdirectory: "{{ template_type }}"
 
 _tasks:
-  - "./init.sh {{ default_branch_name }}"
+  - "./init.sh {{ default_branch_name }} {{ template_type }}"
