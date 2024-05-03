@@ -47,7 +47,7 @@ jobs:
         run: docker compose --profile dev build
 
       - name: Run DB Migrations
-        run: docker compose --profile dev run --rm django-dev python manage.py migrate
+        run: docker compose --profile dev run --rm django-dev manage.py migrate
 
       - name: Run Django Tests
         run: docker compose --profile dev run django-dev pytest
