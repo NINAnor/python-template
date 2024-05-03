@@ -23,6 +23,12 @@ repos:
     - id: detect-secrets
       args: [--exclude-files=django/src/fixtures/users.json]
 
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.5
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
   - repo: https://github.com/KyleKing/copier-template-tester
     rev: main
     hooks:

@@ -19,14 +19,6 @@ version = "0.1.0"
 [project.scripts]
 {% block project_scripts %}"{{ project_slug }}_start" = "main:start"{% endblock %}
 
-{% block ruff_extra %}{% endblock %}
-
 {% block extra %}{% endblock %}
 
-[tool.ruff]
-fix = true
-
-[tool.ruff.lint]
-select = ["E", "W", "I", "F", "UP", {% if type_annotations %}"ANN",{% endif %} "S", "B", "A", "COM", "LOG", "PTH", "Q"]
-ignore = ["COM812"]
-{% if type_annotations %}ignore = ["ANN003", "ANN002"]{% endif %}
+{% include 'pyproject.toml' %}

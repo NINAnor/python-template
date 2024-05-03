@@ -59,11 +59,6 @@ prod = [
 "manage.py" = "{{ project_slug }}:django_manage"
 {% endblock %}
 
-{% block ruff_extra %}
-[tool.ruff.lint.per-file-ignores]
-"src/**/migrations/*.py" = ["E501", "ANN"]
-{% endblock %}
-
 {% block extra %}
 # ==== pytest ====
 [tool.pytest.ini_options]
