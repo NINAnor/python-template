@@ -22,11 +22,21 @@ run_hooks() {
     done <<< "$hooks"
 }
 
-if [ ! -d \".git\" ];
-then
-    git init . -b $1;
-    pre-commit install;
-    git add .;
-    run_hooks;
-    git commit -m "Initial commit";
+if [ -d .git/ ]; then
+  echo "This project is already initialized. Running hooks"
+  git add .;
+  run_hooks;
+  exit 0
 fi
+
+if [[ $PWD == /tmp* ]]; then
+    echo "This is copier update. Running hooks"
+else
+    echo "New repository, set up git and run hooks"
+fi
+
+git init . -b $1;
+pre-commit install;
+git add .;
+run_hooks;
+git commit -m "Initial commit";
