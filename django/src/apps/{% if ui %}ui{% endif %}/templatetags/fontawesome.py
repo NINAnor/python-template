@@ -1,5 +1,6 @@
-from django import template
 from slippers.templatetags.slippers import register_components
+
+from django import template
 
 register = template.Library()
 register_components(

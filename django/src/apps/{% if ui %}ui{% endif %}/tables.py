@@ -1,7 +1,8 @@
 from typing import Any, Self
 
-from django.utils.html import format_html
 from django_tables2 import Column, Table
+
+from django.utils.html import format_html
 
 
 class UITable(Table):

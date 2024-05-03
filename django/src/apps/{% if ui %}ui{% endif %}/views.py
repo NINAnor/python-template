@@ -1,5 +1,8 @@
 from typing import Self
 
+from django_filters.views import FilterMixin
+from django_tables2 import SingleTableView
+
 from django.db.models import Model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import Context
@@ -12,8 +15,6 @@ from django.views.generic import (
     TemplateView,
     UpdateView,
 )
-from django_filters.views import FilterMixin
-from django_tables2 import SingleTableView
 
 from .utils import get_deleted_objects
 

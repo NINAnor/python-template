@@ -1,6 +1,7 @@
 from typing import Self
 
 from apps.users.managers import UserManager
+
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField, EmailField
 from django.urls import reverse
