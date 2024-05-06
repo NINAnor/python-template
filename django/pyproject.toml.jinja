@@ -33,8 +33,7 @@
 {% endblock %}
 
 {% block project_extra %}
-
-[project.optional-dependencies]
+{{ super() }}
 dev = [
   "Werkzeug[watchdog]",
   "ipdb",
