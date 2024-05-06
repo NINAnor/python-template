@@ -1,0 +1,39 @@
+name: CI
+
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      # Consider using pre-commit.ci for open source project
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.0
+
+  ctt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup temporary git identity
+        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+
+      - name: Install copier-template-tester
+        run: pipx install copier-template-tester
+
+      - name: Run CTT
+        run: ctt
