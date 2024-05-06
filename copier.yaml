@@ -1,6 +1,7 @@
 # Shared questions
 template_type:
   type: str
+  default: python
   choices:
     - python
     - django
@@ -51,7 +52,7 @@ type_annotations:
 # Python template
 docker:
   type: bool
-  default: true
+  default: false
   help: "Use docker"
   when: "{{ template_type == 'python' }}"
 
