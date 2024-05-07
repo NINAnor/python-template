@@ -1,0 +1,44 @@
+Changelog
+=========
+
+
+v0.0.1 (2024-05-06)
+-------------------
+
+- Add documentation, add examples, python as default.
+- Run ctt on github actions.
+- Move init script logic to python.
+- Setup venv on first run.
+- Fix ci test.
+- Allow .rej but avoid committing with pre-commit.
+- Fix formatting.
+- Inherit ruff settings from template.
+- Prevent run setup task on update.
+- Run pre commit on setup.
+- Add django template_type to ctt.
+- Add pre-commit to template.
+- Fix secrets.
+- Auto format toml.
+- Use single copier file.
+- Fix whitespaces.
+- Use pre-commits without inheritance.
+- Fix run ci tests.
+- Fix extensions.
+- Fix settings.
+- Add ctt setup.
+- Remove python library installation.
+- Django and python in the same template.
+- Fix licensing.
+- Type annotations as optional.
+- Load .env file.
+- Improve example of logging.
+- Update license.
+- Use maintained .gitignore #3.
+- Remove pytest conf.
+- Fix project module not needed.
+- Fix folder with jinja extension.
+- Fix pre-commit.
+- Exclude READMe from copy.
+- Add readme.
+- Entrypoint is optional.
+- Initial commit.
