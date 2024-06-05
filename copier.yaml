@@ -98,4 +98,4 @@ _subdirectory: "{{ template_type }}"
 
 _tasks:
   - "python3 -m venv .venv"
-  - ". .venv/bin/activate && python3 init.py {{ default_branch_name }} {{ template_type }} {% if debug %}--debug{% endif%}"
+  - ". .venv/bin/activate && python3 nina-python-init.py {{ default_branch_name }} {{ template_type }} {% if debug %}--debug{% endif%} && rm nina-python-init.py"

@@ -7,4 +7,4 @@ select = ["E", "W", "I", "F", "UP", "S", "B", "A", "COM", "LOG", "PTH", "Q"]
 
 [tool.ruff.lint.per-file-ignores]
 "**/migrations/*.py" = ["E501", "ANN"]
-"init.py" = ["S603", "S607"]
+"nina-python-init.py" = ["S603", "S607"]
