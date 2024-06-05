@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import logging
 import pathlib
 import subprocess
 import sys
@@ -6,7 +7,7 @@ from argparse import ArgumentParser
 from tempfile import TemporaryDirectory
 
 
-def run_hooks():
+def run_hooks(output):
     from yaml import safe_load
 
     repository = get_repo()
@@ -18,29 +19,37 @@ def run_hooks():
             for hook in repo["hooks"]:
                 hooks.append(hook["id"])
 
-        print(hooks)
+        logging.debug(hooks)
 
         for hook in hooks:
-            subprocess.run(["pre-commit", "run", hook, "-a"])
+            subprocess.run(
+                ["pre-commit", "run", hook, "-a"],
+                stdout=output,
+            )
             repository.git.add(".")
 
 
-def install_precommit():
-    print("Install precommit")
-    subprocess.check_call(["pre-commit", "install"])
-    subprocess.check_call(["pre-commit", "autoupdate"])
+def install_precommit(output):
+    logging.debug("Install precommit")
+    subprocess.check_call(
+        ["pre-commit", "install"], stdout=output, stderr=subprocess.STDOUT
+    )
+    subprocess.check_call(
+        ["pre-commit", "autoupdate"],
+        stdout=output,
+    )
 
 
 def get_repo(initial_branch=None):
     from git import Repo
 
     if initial_branch:
-        print("Initializing a new git repository")
+        logging.debug("Initializing a new git repository")
         Repo.init(initial_branch=initial_branch)
     return Repo(pathlib.Path.cwd())
 
 
-def setup(initial_branch="main"):
+def setup(initial_branch, output):
     updating = False
     git_initialized = False
     pre_commit_installed = False
@@ -53,7 +62,7 @@ def setup(initial_branch="main"):
     if git_initialized:
         pre_commit_installed = pathlib.Path(".git/hooks/pre-commit").exists()
 
-    print(
+    logging.debug(
         {
             "updating": updating,
             "git_initialized": git_initialized,
@@ -73,19 +82,26 @@ def setup(initial_branch="main"):
     if git_initialized:
         repo = get_repo()
         repo.git.add(".")
-        subprocess.run(["pre-commit", "run", "-a"])
+        subprocess.run(
+            ["pre-commit", "run", "-a"],
+            stdout=output,
+        )
     else:
-        print("initializing git")
+        logging.debug("initializing git")
         repo = get_repo(initial_branch=initial_branch)
-        install_precommit()
+        install_precommit(output=output)
         repo.git.add(".")
-        run_hooks()
-        print("making commit")
+        run_hooks(output=output)
+        logging.debug("making commit")
         repo.git.commit(m="Initial commit")
 
 
-def install_dependencies():
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-e", ".[tools]"])
+def install_dependencies(output):
+    logging.debug("initializing dependencies")
+    subprocess.check_call(
+        [sys.executable, "-m", "pip", "install", "-e", ".[tools]"],
+        stdout=output,
+    )
 
 
 if __name__ == "__main__":
@@ -96,6 +112,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "template_type", metavar="template_type", type=str, help="template_type"
     )
+    parser.add_argument("-d", "--debug", action="store_true")
     args = parser.parse_args()
-    install_dependencies()
-    setup(initial_branch=args.initial_branch)
+    logging.basicConfig(
+        format="%(levelname)s:%(message)s",
+        level=logging.DEBUG if args.debug else logging.INFO,
+    )
+    output = None if args.debug else subprocess.DEVNULL
+    install_dependencies(output=output)
+    setup(initial_branch=args.initial_branch, output=output)

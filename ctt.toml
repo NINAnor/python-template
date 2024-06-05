@@ -1,12 +1,15 @@
 [defaults]
 template_type = "python"
+debug = true
 
 [output.".ctt/defaults"]
+debug = true
 
 [output.".ctt/django-full"]
 gis = true
 rest = true
 template_type = "django"
+debug = true
 ui = true
 
 [output.".ctt/django-gis"]
@@ -14,23 +17,28 @@ gis = true
 rest = false
 template_type = "django"
 ui = false
+debug = true
 
 [output.".ctt/django-rest"]
 rest = true
 template_type = "django"
 ui = false
+debug = true
 
 [output.".ctt/django-simple"]
 gis = false
 rest = false
 template_type = "django"
 ui = false
+debug = true
 
 [output.".ctt/django-ui"]
 gis = false
 rest = false
 template_type = "django"
 ui = true
+debug = true
 
 [output.".ctt/python"]
 docker = true
+debug = true
