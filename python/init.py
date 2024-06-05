@@ -53,6 +53,15 @@ def setup(initial_branch="main"):
     if git_initialized:
         pre_commit_installed = pathlib.Path(".git/hooks/pre-commit").exists()
 
+    print(
+        {
+            "updating": updating,
+            "git_initialized": git_initialized,
+            "pre_commit_installed": pre_commit_installed,
+            "path": pathlib.Path.cwd(),
+        }
+    )
+
     if updating:
         if not pre_commit_installed:
             install_precommit()
