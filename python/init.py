@@ -62,13 +62,13 @@ def setup(initial_branch="main"):
         }
     )
 
-    if updating:
-        if not pre_commit_installed:
-            install_precommit()
+    # if updating:
+    #     if not pre_commit_installed:
+    #         install_precommit()
 
-        subprocess.check_call(["pre-commit", "autoupdate"])
-        run_hooks()
-        return
+    #     subprocess.check_call(["pre-commit", "autoupdate"])
+    #     run_hooks()
+    #     return
 
     if git_initialized:
         repo = get_repo()
