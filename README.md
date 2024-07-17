@@ -10,7 +10,7 @@ A template to fast setup python projects
 Make sure that `copier` is installed, then run:
 
 ```
-copier copy gh:ninanor/python-template my-awesome-python-project
+copier copy --trust gh:ninanor/python-template my-awesome-python-project
 ```
 
 Answer the questions and you are done.
