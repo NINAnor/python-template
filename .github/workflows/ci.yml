@@ -24,10 +24,18 @@ jobs:
 
   ctt:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['3.11', '3.12', '3.10']
 
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.version }}
 
       - name: Setup temporary git identity
         run: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
