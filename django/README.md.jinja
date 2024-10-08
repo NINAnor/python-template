@@ -22,7 +22,7 @@ This will create some shortcuts to run docker commands.
 ### Development setup
 ```
 docker compose --profile dev up -d --build
-# or dpli_dev up -d --build
+# or dpcli_dev up -d --build
 ```
 This will build the docker images for local development and startup everything.
 **NOTE**: the `docker-compose.yml` uses bind-mounts, so editing your local django files will trigger a server reload without needing to rebuild the whole image.
@@ -62,7 +62,7 @@ models2puml #
 This setup will create docker images optimized for production, without devtools installed
 ```
 docker compose --profile prod up -d --build
-# or dpli_prod up -d --build
+# or dpcli_prod up -d --build
 ```
 
 ## How to update
