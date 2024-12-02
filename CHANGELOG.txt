@@ -2,6 +2,20 @@ Changelog
 =========
 
 
+v0.0.2 (2024-12-02)
+------------
+
+- Add default migrations module.
+- Use github env in CI fix #22.
+- Use nix for building documentation, also in CI.
+- Add queue to django.
+- Fix manage.py paths.
+- Fix typos in Django README.md.jinja.
+- Fix typo in README.md.jinja.
+- Test different versions of python with ci.
+- Add --trust to README.md.
+
+
 v0.0.1 (2024-05-06)
 -------------------
 
