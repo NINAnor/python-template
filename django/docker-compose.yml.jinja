@@ -114,28 +114,6 @@ services:
     ports:
       - 5432:5432
 
-  # documentation
-  docs-dev:
-    build:
-      context: ./docs
-      target: dev
-    volumes:
-      - ./docs:/book
-    ports:
-      - '3001:3000'
-    command: serve --hostname 0.0.0.0
-    profiles:
-      - dev
-
-  docs:
-    build:
-      context: ./docs
-      target: prod
-    ports:
-      - '3000:80'
-    profiles:
-      - prod
-
   nginx:
     build:
       context: ./nginx
