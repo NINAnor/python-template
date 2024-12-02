@@ -78,6 +78,22 @@ services:
       <<: *django-dev-env
       DJANGO_MIGRATE: 1
 
+{% if queue %}
+  queue:
+    <<: *django-prod
+    environment:
+      <<: *django-prod-env
+      WAIT_FOR_HTTP: http://django:8000/ht/
+    command: python manage.py procrastinate worker
+
+  queue-dev:
+    <<: *django-dev
+    environment:
+      <<: *django-dev-env
+      WAIT_FOR_HTTP: http://django:8000/ht/
+    command: python manage.py procrastinate worker
+{% endif %}
+
 {% if ui %}
   theme:
     build:

@@ -56,6 +56,9 @@ POSTGRES_EXTRA_DB_BACKEND_BASE = "django.contrib.gis.db.backends.postgis"
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DATABASES["default"]["CONN_MAX_AGE"] = env.int(
+    "CONN_MAX_AGE", default=None
+)  # noqa F405
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -99,6 +102,8 @@ THIRD_PARTY_APPS = [
     "solo",{% if ui %}
     "slippers",
     "django_tables2",{% endif %}
+    {% if queue %}"procrastinate.contrib.django",{% endif %}
+
 ]
 
 LOCAL_APPS = [

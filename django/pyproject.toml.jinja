@@ -30,6 +30,7 @@
     "djangorestframework-simplejwt",
     "django-cors-headers",{% endif %}
     {%- if ldap %}"django-auth-ldap",{% endif %}
+    {%- if queue %}"procrastinate[django]",{% endif %}
 {% endblock %}
 
 {% block project_extra %}

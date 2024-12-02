@@ -39,6 +39,14 @@ template_type = "django"
 ui = true
 debug = true
 
+[output.".ctt/django-queue"]
+gis = false
+rest = false
+template_type = "django"
+ui = false
+queue = true
+debug = true
+
 [output.".ctt/python"]
 docker = true
 debug = true
