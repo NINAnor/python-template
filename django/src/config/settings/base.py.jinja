@@ -10,7 +10,7 @@ from django_auth_ldap.config import LDAPSearch{% endif %}
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent.parent
 SRC_DIR = BASE_DIR / "src"
 APPS_DIR = SRC_DIR / "apps"
-env = environ.Env()
+env = environ.FileAwareEnv()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
