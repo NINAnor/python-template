@@ -6,4 +6,4 @@ set -o pipefail
 # Run commands to setup
 {% block setup_commands %}{% endblock setup_commands %}
 
-exec "$@"
+uv run "$@"
