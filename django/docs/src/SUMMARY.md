@@ -1,2 +1,0 @@
-# Summary
-[Introduction](README.md)
