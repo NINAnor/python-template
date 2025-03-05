@@ -3,6 +3,14 @@
 ## Setup
 Install `uv`: https://docs.astral.sh/uv/getting-started/installation/
 
+```bash
+git init
+uv sync
+git add .
+git commit -m "Initial commit"
+uv run pre-commit install # optional
+```
+
 ### Run
 To execute your software run:
 ```
@@ -16,7 +24,7 @@ Just run `uv run main.py` and you are good to go!
 pre-commit is a set of tools that help you ensure code quality. It runs every time you make a commit.
 To install pre-commit hooks run:
 ```bash
-uvx pre-commit install
+uv run pre-commit install
 ```
 
 ### How to install a package
