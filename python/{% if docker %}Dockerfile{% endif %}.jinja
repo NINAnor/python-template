@@ -1,18 +1,19 @@
-FROM debian:12.5 as base
-RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
-    --mount=target=/var/cache/apt,type=cache,sharing=locked \
-    apt-get update && apt-get install --no-install-recommends -yq python3 python3-pip git python3-venv python3-dev
+FROM python:3.12-slim
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV UV_LINK_MODE=copy
 
 WORKDIR /app
-RUN python3 -m venv .venv
-ENV PYTHONPATH=/app/.venv/lib
-ENV PATH=/app/.venv/bin:$PATH
-COPY ./pyproject.toml .
-RUN pip install -e .
 
+RUN --mount=type=cache,target=/root/.cache/uv \
+--mount=type=bind,source=uv.lock,target=uv.lock \
+--mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+uv sync --frozen --no-install-project
 
-FROM base
-COPY src src
-RUN pip install -e .
-COPY entrypoint.sh .
-ENTRYPOINT ["./entrypoint.sh"]
+ADD . /app
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+uv sync --frozen
+
+ENTRYPOINT /app/entrypoint.sh
+CMD ["main.py"]

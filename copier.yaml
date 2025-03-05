@@ -4,7 +4,7 @@ template_type:
   default: python
   choices:
     - python
-    - django
+    # - django
 
 project_name:
   type: str
@@ -58,41 +58,41 @@ docker:
 
 
 # Django template
-gis:
-  type: bool
-  default: false
-  help: "Setup to use GIS software (GDAL, GEODjango)"
-  when: "{{ template_type == 'django' }}"
+# gis:
+#   type: bool
+#   default: false
+#   help: "Setup to use GIS software (GDAL, GEODjango)"
+#   when: "{{ template_type == 'django' }}"
 
-rest:
-  type: bool
-  default: false
-  help: "Need REST APIs"
-  when: "{{ template_type == 'django' }}"
+# rest:
+#   type: bool
+#   default: false
+#   help: "Need REST APIs"
+#   when: "{{ template_type == 'django' }}"
 
-ldap:
-  type: bool
-  default: false
-  help: "LDAP Authentication"
-  when: "{{ template_type == 'django' }}"
+# ldap:
+#   type: bool
+#   default: false
+#   help: "LDAP Authentication"
+#   when: "{{ template_type == 'django' }}"
 
-ui:
-  type: bool
-  default: "{{ not rest }}"
-  help: "Use Django for UI rendering"
-  when: "{{ template_type == 'django' }}"
+# ui:
+#   type: bool
+#   default: "{{ not rest }}"
+#   help: "Use Django for UI rendering"
+#   when: "{{ template_type == 'django' }}"
 
-queue:
-  type: bool
-  default: false
-  help: "Setup queue system"
-  when: "{{ template_type == 'django' }}"
+# queue:
+#   type: bool
+#   default: false
+#   help: "Setup queue system"
+#   when: "{{ template_type == 'django' }}"
 
-primary_color:
-  type: str
-  default: "#425563"
-  when: "{{ ui and template_type == 'django' }}"
-  help: "Primary color for the theme"
+# primary_color:
+#   type: str
+#   default: "#425563"
+#   when: "{{ ui and template_type == 'django' }}"
+#   help: "Primary color for the theme"
 
 debug:
   type: bool
@@ -102,6 +102,10 @@ debug:
 
 _subdirectory: "{{ template_type }}"
 
+_envops:
+  keep_trailing_newline: true
+  trim_blocks: true
+  lstrip_blocks: true
+
 _tasks:
-  - "python3 -m venv .venv"
-  - ". .venv/bin/activate && python3 nina-python-init.py {{ default_branch_name }} {{ template_type }} {% if debug %}--debug{% endif%} && rm nina-python-init.py"
+  - "uv sync"

@@ -5,7 +5,9 @@ authors = [
 # PEP 621 project metadata
 # See https://www.python.org/dev/peps/pep-0621/
 dependencies = [
-    {% block dependencies %}"django-environ",{% endblock %}
+{% block dependencies %}
+  "django-environ",
+{% endblock %}
 ]
 description = ""
 license = {text = "GPL-3.0+"}
@@ -13,19 +15,6 @@ name = "{{ project_slug }}"
 readme = "README.md"
 requires-python = ">=3.10"
 version = "0.1.0"
-
-{% block project_extra %}
-[project.optional-dependencies]
-tools = [
-  "pre-commit",
-  "pyyaml",
-  "GitPython"
-]
-{% endblock %}
-
-[project.scripts]
-{% block project_scripts %}"{{ project_slug }}_start" = "main:start"{% endblock %}
-
+{% block project_extra %}{% endblock %}
 {% block extra %}{% endblock %}
-
 {% include 'pyproject.toml' %}
