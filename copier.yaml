@@ -106,6 +106,3 @@ _envops:
   keep_trailing_newline: true
   trim_blocks: true
   lstrip_blocks: true
-
-_tasks:
-  - "uv sync"
