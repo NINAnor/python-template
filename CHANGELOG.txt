@@ -2,6 +2,47 @@ Changelog
 =========
 
 
+v0.1.0 (2025-03-05)
+-------------------
+
+Changes
+-------
+
+- Docs: update docs.
+- Docs: update documentation.
+- Docs: specify setup instructions.
+- Remove django (temporary)
+- Reformat ctt.
+- Disable ctt.
+- Set entrypoint to uv run.
+- Remove task.
+
+
+Fixes
+-----
+
+- .env expected location.
+- Docker setup.
+- Add pre-commit hooks as dev deps.
+- Improve ci permissions and security.
+- Pyproject order.
+- Fix toml.
+- Remove block from non-jinja.
+- Spacing, remove unused scripts.
+
+
+Other
+-----
+
+- Feat: add zizmor to precommit.
+- Feat: add creosote and deptry.
+- Feat: add zizmor.
+- Feat:usr: add precommit in python.
+- Use uv, temporary disable django.
+- Use FileAwareEnv.
+- Fix django command for queue.
+
+
 v0.0.2 (2024-12-02)
 ------------
 

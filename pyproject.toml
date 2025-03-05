@@ -11,13 +11,13 @@ license = { text = "GPL-3.0+" }
 name = "nina-python-template"
 readme = "README.md"
 requires-python = ">=3.10"
-version = "0.0.2"
+version = "0.1.0"
 
 [tool.bumpversion]
 allow_dirty = false
 commit = false
 commit_args = ""
-current_version = "0.0.2"
+current_version = "0.1.0"
 ignore_missing_files = false
 ignore_missing_version = false
 message = "Bump version: {current_version} → {new_version}"
