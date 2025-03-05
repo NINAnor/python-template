@@ -4,8 +4,8 @@ services:
       context: .
     environment:
         DEBUG: True
-    command: main.py
-    #command: pdb -c continue main.py
+    command: uv run main.py
+    #command: uv run pdb -c continue main.py
     develop:
       watch:
         # Sync the working directory with the `/app` directory in the container
