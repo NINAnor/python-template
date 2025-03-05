@@ -59,6 +59,11 @@ repos:
     hooks:
       - id: creosote
 
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v1.4.1
+    hooks:
+    - id: zizmor
+
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
   autoupdate_schedule: weekly
