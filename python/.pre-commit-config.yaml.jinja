@@ -42,13 +42,22 @@ repos:
             merging.
         language: fail
         files: "\\.rej$"
-  {% block extra %}
 
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
     hooks:
     -   id: detect-secrets
-  {% endblock %}
+
+  - repo: https://github.com/fpgmaas/deptry.git
+    rev: "0.23.0"
+    hooks:
+      - id: deptry
+        args: ["--ignore", "DEP001"]
+
+  - repo: https://github.com/fredrikaverpil/creosote
+    rev: v4.0.1
+    hooks:
+      - id: creosote
 
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
