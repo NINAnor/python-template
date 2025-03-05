@@ -5,12 +5,18 @@ on:
   push:
   pull_request:
 
+permissions: {}
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v4
