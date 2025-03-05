@@ -4,7 +4,7 @@ import pathlib
 import environ
 
 env = environ.Env()
-BASE_DIR = pathlib.Path(__file__).parent.parent
+BASE_DIR = pathlib.Path(__file__).parent
 environ.Env.read_env(str(BASE_DIR / ".env"))
 
 DEBUG = env.bool("DEBUG", default=False)
