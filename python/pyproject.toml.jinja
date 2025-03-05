@@ -17,4 +17,10 @@ requires-python = ">=3.10"
 version = "0.1.0"
 {% block project_extra %}{% endblock %}
 {% block extra %}{% endblock %}
-{% include 'pyproject.toml' %}
+
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint]
+ignore = ["COM812"]
+select = ["E", "W", "I", "F", "UP", "S", "B", "A", "COM", "LOG", "PTH", "Q"]
