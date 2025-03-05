@@ -1,3 +1,36 @@
+[dependency-groups]
+dev = ["bump-my-version>=1.0.1", "gitchangelog>=3.0.4", "pystache>=0.6.7"]
+
+[project]
+authors = [{ name = "Niccolò Cantù", email = "niccolo.cantu@nina.no" }]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+dependencies = []
+description = ""
+license = { text = "GPL-3.0+" }
+name = "nina-python-template"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.0.2"
+
+[tool.bumpversion]
+allow_dirty = false
+commit = false
+commit_args = ""
+current_version = "0.0.2"
+ignore_missing_files = false
+ignore_missing_version = false
+message = "Bump version: {current_version} → {new_version}"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+regex = false
+replace = "{new_version}"
+search = "{current_version}"
+serialize = ["{major}.{minor}.{patch}"]
+sign_tags = false
+tag = false
+tag_message = "Bump version: {current_version} → {new_version}"
+tag_name = "v{new_version}"
+
 [tool.ruff]
 fix = true
 

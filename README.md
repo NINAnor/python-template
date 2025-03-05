@@ -48,3 +48,20 @@ Check this [page](https://copier.readthedocs.io/en/stable/updating/) for more sp
 
 ## Struggling with a template?
 Please report any issues you have using the template, even if some documentation is unclear or is missing!
+
+
+# Development
+Needed tools:
+- bump-my-version
+- copier-template-tester (ctt)
+- gitchangelog
+
+You can install them by running:
+```bash
+uv tool install
+```
+
+## How to version
+The changelog is populated based on the git history.
+use `uvb run bump-my-version` to update the version of the template.
+then generate the updated changelog by running `uv run gitchangelog`.
