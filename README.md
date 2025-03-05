@@ -63,5 +63,17 @@ uv tool install
 
 ## How to version
 The changelog is populated based on the git history.
-use `uvb run bump-my-version` to update the version of the template.
+use `uv run bump-my-version` to update the version of the template.
 then generate the updated changelog by running `uv run gitchangelog`.
+
+Example:
+```bash
+uv run bump-my-version bump minor
+git add .
+git commit -m "Bump version: 0.1.0 -> 0.2.0"
+git tag v0.2.0
+uv run gitchangelog
+git add CHANGELOG.md
+git commit --amend --no-edit
+git tag -f v0.2.0
+```
