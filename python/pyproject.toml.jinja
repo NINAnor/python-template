@@ -19,10 +19,10 @@ version = "0.1.0"
 {% block extra %}{% endblock %}
 
 [tool.creosote]
-venvs=[".venv"]
-paths=["."]
 deps-file="pyproject.toml"
+paths=["."]
 sections=["project.dependencies"]
+venvs=[".venv"]
 
 [tool.ruff]
 fix = true
