@@ -32,7 +32,7 @@ Press `Enter` to all questions, you'll get a simple python project to start with
 ## How to update
 Basically you just need to run:
 ```
-copier update
+uvx copier update
 ```
 
 You can now change your questions, in case you want to keep your previous answers use: `uvx copier update --defaults`.
