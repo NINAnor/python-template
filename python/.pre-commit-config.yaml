@@ -1,4 +1,10 @@
-default_stages: [commit]
+default_stages: [pre-commit]
+
+# sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
+ci:
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -58,14 +64,13 @@ repos:
     rev: v4.0.1
     hooks:
       - id: creosote
+        args:
+          - '--venv=.venv'
+          - '--path=.'
+          - '--deps-file=pyproject.toml'
+          - '--section=project.dependencies'
 
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.4.1
     hooks:
     - id: zizmor
-
-# sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
-ci:
-  autoupdate_schedule: weekly
-  skip: []
-  submodules: false

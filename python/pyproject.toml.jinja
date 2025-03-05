@@ -1,3 +1,9 @@
+[dependency-groups]
+dev = [
+  "deptry",
+  "pre-commit"
+]
+
 [project]
 authors = [
   {name = "{{ author_name }}", email = "{{ email }}"}
@@ -19,10 +25,10 @@ version = "0.1.0"
 {% block extra %}{% endblock %}
 
 [tool.creosote]
-deps-file="pyproject.toml"
-paths=["."]
-sections=["project.dependencies"]
-venvs=[".venv"]
+deps-file = "pyproject.toml"
+paths = ["."]
+sections = ["project.dependencies"]
+venvs = [".venv"]
 
 [tool.ruff]
 fix = true
