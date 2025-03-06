@@ -2,6 +2,22 @@ Changelog
 =========
 
 
+v0.1.4 (2025-03-06)
+-------------------
+
+Changes
+-------
+
+- Docs: use generic numbers for version example.
+- Docs: fix the filename.
+
+
+Fixes
+-----
+
+- Typo.
+
+
 v0.1.3 (2025-03-06)
 -------------------
 
