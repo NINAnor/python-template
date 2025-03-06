@@ -18,8 +18,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync
 
       - name: Run pre-commit
-        uses: pre-commit/action@v3.0.1
+        uses: tox-dev/action-pre-commit-uv@v1
