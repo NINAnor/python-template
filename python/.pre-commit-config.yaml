@@ -60,16 +60,6 @@ repos:
       - id: deptry
         args: ["--ignore", "DEP001"]
 
-  - repo: https://github.com/fredrikaverpil/creosote
-    rev: v4.0.1
-    hooks:
-      - id: creosote
-        args:
-          - '--venv=.venv'
-          - '--path=.'
-          - '--deps-file=pyproject.toml'
-          - '--section=project.dependencies'
-
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.4.1
     hooks:
