@@ -1,6 +1,11 @@
 [dependency-groups]
 dev = [
   "deptry",
+  {% if notebook %}
+    {% if notebook_type == "jupyter" %}
+  "ipykernel",
+    {% endif %}
+  {% endif %}
   "pre-commit"
 ]
 

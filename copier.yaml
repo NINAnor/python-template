@@ -49,6 +49,21 @@ type_annotations:
   help: "Type annotation mandatory"
 
 
+notebook:
+  type: bool
+  default: false
+  help: "Use a notebook"
+  when: "{{ template_type == 'python' }}"
+
+notebook_type:
+  type: str
+  default: jupyter
+  choices:
+    - jupyter
+    - marimo
+  help: "Type of notebook"
+  when: "{{ notebook }}"
+
 # Python template
 docker:
   type: bool

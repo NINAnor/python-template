@@ -5,6 +5,16 @@ template_type = "python"
 [output.".ctt/defaults"]
 debug = true
 
+[output.".ctt/jupyter"]
+debug = true
+notebook = true
+notebook_type = "jupyter"
+
+[output.".ctt/marimo"]
+debug = true
+notebook = true
+notebook_type = "marimo"
+
 [output.".ctt/python"]
 debug = true
 docker = true
