@@ -74,7 +74,7 @@ git add .
 git commit -m "Bump version: 0.1.0 -> 0.2.0"
 git tag v0.2.0
 uv run gitchangelog
-git add CHANGELOG.md
+git add CHANGELOG.txt
 git commit --amend --no-edit
 git tag -f v0.2.0
 ```
