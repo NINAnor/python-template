@@ -69,6 +69,7 @@ then generate the updated changelog by running `uv run gitchangelog`.
 Example:
 ```bash
 uv run bump-my-version bump minor
+uv sync
 git add .
 git commit -m "Bump version: 0.1.0 -> 0.2.0"
 git tag v0.2.0

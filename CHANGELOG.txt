@@ -2,6 +2,30 @@ Changelog
 =========
 
 
+v0.1.2 (2025-03-06)
+-------------------
+
+Changes
+-------
+
+- Drop creosote.
+- Revert "Drop deptry"
+  This reverts commit ac5cbac12592b3555e334eacdb8d535c7c6352c4.
+
+
+Fixes
+-----
+
+- Run precommit with uv in ci.
+
+
+v0.1.1 (2025-03-06)
+-------------------
+
+- Drop deptry.
+- Update revs in .pre-commit-config.yaml.
+
+
 v0.1.0 (2025-03-05)
 -------------------
 
