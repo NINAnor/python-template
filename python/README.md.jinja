@@ -17,7 +17,7 @@ Run the following commands to start the notebook:
     {% if notebook_type == 'jupyter' %}
 ```bash
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name={{project_slug}}
-uv run ---with jupyter jupyter lab
+uv run --with jupyter jupyter lab
 ```
 Choose the kernel `{{project_slug}}` in the notebook
     {% elif notebook_type == 'marimo' %}
