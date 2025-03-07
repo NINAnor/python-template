@@ -13,14 +13,20 @@ uv run pre-commit install # optional
 
 {% if notebook %}
 ## Setup Notebook
-Run the following commands to start the notebook:
     {% if notebook_type == 'jupyter' %}
+Run the following commands first to setup the notebook environment:
 ```bash
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name={{project_slug}}
+```
+This register this project environment as a kernel `{{project_slug}}`, kernels are isolated environments that you can use to run your code.
+If the kernel is not available in the list of kernels, you can refresh the page and it should appear.
+
+**If you are using a local jupyter notebook** run the following command:
+```bash
 uv run --with jupyter jupyter lab
 ```
-Choose the kernel `{{project_slug}}` in the notebook
     {% elif notebook_type == 'marimo' %}
+Run the following command to start:
 ```bash
 uv run --with marimo marimo edit
 ```
