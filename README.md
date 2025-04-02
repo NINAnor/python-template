@@ -45,6 +45,17 @@ Check this [page](https://copier.readthedocs.io/en/stable/updating/) for more sp
 - python
     - docker; add standard files for dockerizing a python project
 
+## Running pre-commit
+
+[pre-commit](https://github.com/pre-commit/pre-commit) is a framework for managing pre-commit git hooks. The pre-commit git hooks are ways to identify issues in your code before pushing your changes to the repository, for instance missing semicolons, trailing whitespace, unused dependancies.
+
+:sparkles: pre-commit doesn't change the functionality of your code
+
+To run pre-commit on your code, run:
+
+```
+uv run pre-commit run --all
+```
 
 ## Struggling with a template?
 Please report any issues you have using the template, even if some documentation is unclear or is missing!
