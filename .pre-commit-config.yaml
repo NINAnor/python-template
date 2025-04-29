@@ -2,7 +2,7 @@ default_stages: [pre-commit]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -20,23 +20,23 @@ repos:
         args: [--assume-in-merge]
 
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+    rev: v1.5.0
     hooks:
     - id: detect-secrets
       args: [--exclude-files=django/src/fixtures/users.json]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.3
+    rev: v0.11.7
     hooks:
       - id: ruff
       - id: ruff-format
 
   - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.4.1
+    rev: v1.6.0
     hooks:
     - id: zizmor
 
   # - repo: https://github.com/KyleKing/copier-template-tester
-  #   rev: 2.1.2
+  #   rev: 2.2.0
   #   hooks:
   #     - id: copier-template-tester
