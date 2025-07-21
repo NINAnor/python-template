@@ -5,6 +5,7 @@ A template to fast setup python projects
 - python
 - uv
 - [copier](https://github.com/copier-org/copier)
+- git
 
 ## How to use it
 Make sure that `uv` is installed, then run:
