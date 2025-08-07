@@ -117,6 +117,10 @@ debug:
 
 _subdirectory: "{{ template_type }}"
 
+_jinja_extensions:
+  - copier_template_extensions.TemplateExtensionLoader
+  - _extensions/include_raw.py:IncludeRawExtension
+
 _envops:
   keep_trailing_newline: true
   trim_blocks: true

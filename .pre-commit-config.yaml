@@ -31,12 +31,6 @@ repos:
     - id: detect-secrets
       args: [--exclude-files=django/src/fixtures/users.json]
 
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.7
-    hooks:
-      - id: ruff
-      - id: ruff-format
-
   - repo: local
     hooks:
       # Prevent committing .rej files
@@ -54,18 +48,23 @@ repos:
     hooks:
     -   id: detect-secrets
 
-  - repo: https://github.com/fpgmaas/deptry.git
-    rev: "0.23.1"
-    hooks:
-      - id: deptry
-        args: ["--ignore", "DEP001"]
-
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.11.0
     hooks:
     - id: zizmor
 
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.7
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.8.5
     hooks:
       - id: uv-lock
+
+  - repo: https://github.com/fpgmaas/deptry.git
+    rev: "0.23.1"
+    hooks:
+      - id: deptry

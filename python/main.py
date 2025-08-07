@@ -1,3 +1,5 @@
+"""Main module for the Python template."""
+
 import logging
 import pathlib
 
@@ -15,8 +17,9 @@ logger = logging.getLogger(__name__)
 
 
 def start() -> None:
+    """Start the application."""
     logger.debug("only printed in DEBUG")
-    print("hello world!")
+    logger.info("hello world!")
 
 
 if __name__ == "__main__":
