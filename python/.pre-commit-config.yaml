@@ -1,11 +1,5 @@
 default_stages: [pre-commit]
 
-# sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
-ci:
-  autoupdate_schedule: weekly
-  skip: []
-  submodules: false
-
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
@@ -26,13 +20,19 @@ repos:
         args: [--assume-in-merge]
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.14.0
+    rev: v2.15.0
     hooks:
       - id: pretty-format-toml
         args: [--autofix]
 
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+    - id: detect-secrets
+      args: [--exclude-files=django/src/fixtures/users.json]
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.7
+    rev: v0.12.7
     hooks:
       - id: ruff
       - id: ruff-format
@@ -55,12 +55,17 @@ repos:
     -   id: detect-secrets
 
   - repo: https://github.com/fpgmaas/deptry.git
-    rev: "0.23.0"
+    rev: "0.23.1"
     hooks:
       - id: deptry
         args: ["--ignore", "DEP001"]
 
   - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.6.0
+    rev: v1.11.0
     hooks:
     - id: zizmor
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.8.5
+    hooks:
+      - id: uv-lock

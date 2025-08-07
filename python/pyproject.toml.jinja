@@ -35,3 +35,6 @@ fix = true
 [tool.ruff.lint]
 ignore = ["COM812"]
 select = ["E", "W", "I", "F", "UP", "S", "B", "A", "COM", "LOG", "PTH", "Q"]
+
+[tool.deptry]
+package_module_name_map = {"django-environ" = ["environ"]}

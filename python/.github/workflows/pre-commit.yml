@@ -25,4 +25,4 @@ jobs:
         run: uv sync
 
       - name: Run pre-commit
-        uses: tox-dev/action-pre-commit-uv@270ddcea3d0ff0ef1527f49d12590954f31b4b3f # v1.0.2
+        uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507 # v3.0.0

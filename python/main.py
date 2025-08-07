@@ -11,9 +11,11 @@ DEBUG = env.bool("DEBUG", default=False)
 
 logging.basicConfig(level=(logging.DEBUG if DEBUG else logging.INFO))
 
+logger = logging.getLogger(__name__)
+
 
 def start() -> None:
-    logging.debug("only printed in DEBUG")
+    logger.debug("only printed in DEBUG")
     print("hello world!")
 
 

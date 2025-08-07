@@ -1,20 +1,135 @@
 [defaults]
+# Test pre-commit functionality
+_extra_tasks = [
+#  "rm -rf .git",
+  "git init",
+  "git add .",
+  "uv sync",
+  "uv run pre-commit run --all-files || uv run pre-commit run --all-files"
+]
+author_name = "Test Author"
 debug = true
+default_branch_name = "main"
+email = "test@example.com"
+project_name = "Test Python Project"
+project_slug = "test_python_project"
+repo_name = "test-repo"
+repo_org = "testorg"
 template_type = "python"
 
-[output.".ctt/defaults"]
-debug = true
+# Python project with custom organization and author
+[output."/tmp/ctt/python-template/custom"]
+author_name = "Custom Author Name"
+debug = false
+default_branch_name = "develop"
+docker = true
+email = "custom.author@customorg.com"
+notebook = false
+project_name = "Custom Python Project"
+project_slug = "custom_python_project"
+repo_name = "custom-project"
+repo_org = "customorg"
+template_type = "python"
+type_annotations = true
 
-[output.".ctt/jupyter"]
-debug = true
-notebook = true
-notebook_type = "jupyter"
+# Python project with Docker support
+[output."/tmp/ctt/python-template/docker"]
+author_name = "Test Author"
+debug = false
+docker = true
+email = "test@example.com"
+notebook = false
+project_name = "Docker Python Project"
+project_slug = "docker_python"
+repo_name = "docker-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = false
 
-[output.".ctt/marimo"]
-debug = true
-notebook = true
-notebook_type = "marimo"
-
-[output.".ctt/python"]
+# Python project testing edge cases with special characters
+[output."/tmp/ctt/python-template/edge_cases"]
+author_name = "Edge Case Author"
 debug = true
 docker = true
+email = "edge.case@test.org"
+notebook = true
+notebook_type = "marimo"
+project_name = "Edge-Cases & Special Characters!"
+project_slug = "edge_cases_special_characters"
+repo_name = "edge-cases-repo"
+repo_org = "edge-org"
+template_type = "python"
+type_annotations = true
+
+# Full-featured Python project with all options enabled
+[output."/tmp/ctt/python-template/full"]
+author_name = "Test Author"
+debug = true
+docker = true
+email = "test@example.com"
+notebook = true
+notebook_type = "jupyter"
+project_name = "Full Featured Python Project"
+project_slug = "full_python"
+repo_name = "full-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = true
+
+# Python project with Jupyter notebook
+[output."/tmp/ctt/python-template/jupyter"]
+author_name = "Test Author"
+debug = false
+docker = false
+email = "test@example.com"
+notebook = true
+notebook_type = "jupyter"
+project_name = "Jupyter Python Project"
+project_slug = "jupyter_python"
+repo_name = "jupyter-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = false
+
+# Python project with Marimo notebook
+[output."/tmp/ctt/python-template/marimo"]
+author_name = "Test Author"
+debug = false
+docker = false
+email = "test@example.com"
+notebook = true
+notebook_type = "marimo"
+project_name = "Marimo Python Project"
+project_slug = "marimo_python"
+repo_name = "marimo-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = false
+
+# Basic Python project with minimal configuration
+[output."/tmp/ctt/python-template/minimal"]
+author_name = "Test Author"
+debug = false
+docker = false
+email = "test@example.com"
+notebook = false
+project_name = "Minimal Python Project"
+project_slug = "minimal_python"
+repo_name = "minimal-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = false
+
+# Python project with type annotations
+[output."/tmp/ctt/python-template/typed"]
+author_name = "Test Author"
+debug = false
+docker = false
+email = "test@example.com"
+notebook = false
+project_name = "Typed Python Project"
+project_slug = "typed_python"
+repo_name = "typed-python"
+repo_org = "testorg"
+template_type = "python"
+type_annotations = true

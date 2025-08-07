@@ -1,16 +1,21 @@
 [dependency-groups]
-dev = ["bump-my-version>=1.0.1", "gitchangelog>=3.0.4", "pystache>=0.6.7"]
+dev = [
+  "bump-my-version>=1.0.1",
+  "copier-template-tester>=2.1.2",
+  "gitchangelog>=3.0.4",
+  "pystache>=0.6.7"
+]
 
 [project]
-authors = [{ name = "Niccolò Cantù", email = "niccolo.cantu@nina.no" }]
+authors = [{name = "Niccolò Cantù", email = "niccolo.cantu@nina.no"}]
 # PEP 621 project metadata
 # See https://www.python.org/dev/peps/pep-0621/
 dependencies = []
 description = ""
-license = { text = "GPL-3.0+" }
+license = {text = "GPL-3.0+"}
 name = "nina-python-template"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10.5"
 version = "0.1.5"
 
 [tool.bumpversion]

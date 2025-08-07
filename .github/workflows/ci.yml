@@ -12,44 +12,26 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    strategy:
+      matrix:
+        version: ["3.10", "3.11", "3.12"]
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4.9.1
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync --frozen
 
       - name: Run pre-commit
         uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507 # v3.0.0
 
-  ctt:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    strategy:
-      matrix:
-        version: ["3.11", "3.12", "3.10"]
-
-    steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          persist-credentials: false
-
-      - name: Set up Python
-        uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4.9.1
-        with:
-          python-version: ${{ matrix.version }}
-
-      - name: Setup temporary git identity
-        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
-
-      - name: Install copier-template-tester
-        run: pipx install copier-template-tester
-
-      - name: Run CTT
-        run: ctt
+      - name: Run pre-commit (extra)
+        uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507 # v3.0.0
+        extra_args: --config .pre-commit-config-extra.yaml
