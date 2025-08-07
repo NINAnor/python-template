@@ -2,15 +2,13 @@
 A template to fast setup python projects
 
 ## Requirements
-- python
 - uv
-- [copier](https://github.com/copier-org/copier)
 - git
 
 ## How to use it
 Make sure that `uv` is installed, then run:
 
-```
+```bash
 uvx copier copy gh:ninanor/python-template my-awesome-python-project
 ```
 
@@ -63,30 +61,28 @@ Please report any issues you have using the template, even if some documentation
 
 
 # Development
-Needed tools:
-- bump-my-version
-- copier-template-tester (ctt)
-- gitchangelog
+Install development dependencies:
+- [pinact](https://github.com/suzuki-shunsuke/pinact/blob/main/INSTALL.md)
 
-You can install them by running:
+## Testing the template
+To test the template using copier-template-tester, run:
 ```bash
-uv tool install
+uvx pre-commit run -c .pre-commit-config-extra.yaml
+```
+
+## Maintenance
+To update dependencies and tools:
+```bash
+./scripts/maintenance.sh
 ```
 
 ## How to version
-The changelog is populated based on the git history.
-use `uv run bump-my-version` to update the version of the template.
-then generate the updated changelog by running `uv run gitchangelog`.
+To create a new release:
+```bash
+./scripts/release.sh <patch|minor|major>
+```
 
 Example:
 ```bash
-uv run bump-my-version bump minor
-uv sync
-git add .
-git commit -m "Bump version: 0.x.0 -> 0.y.0"
-git tag v0.y.0
-uv run gitchangelog
-git add CHANGELOG.txt
-git commit --amend --no-edit
-git tag -f v0.y.0
+./scripts/release.sh minor
 ```

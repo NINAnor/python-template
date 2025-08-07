@@ -1,11 +1,3 @@
-[dependency-groups]
-dev = [
-  "bump-my-version>=1.0.1",
-  "copier-template-tester>=2.1.2",
-  "gitchangelog>=3.0.4",
-  "pystache>=0.6.7"
-]
-
 [project]
 authors = [
   {name = "Niccolò Cantù", email = "niccolo.cantu@nina.no"},
