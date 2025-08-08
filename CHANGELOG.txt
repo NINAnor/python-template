@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+v0.2.4 (2025-08-08)
+-------------------
+
+Fixes
+-----
+
+- Standardize dev dependencies using uv dependency groups.
+
+
 v0.2.3 (2025-08-08)
 -------------------
 
