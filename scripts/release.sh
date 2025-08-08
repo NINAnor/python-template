@@ -17,10 +17,10 @@ uv sync
 
 echo "📋 Adding changes to git..."
 git add .
-git commit -m "Bump version: $(git describe --tags --abbrev=0 HEAD~1) → $(git describe --tags --exact-match HEAD 2>/dev/null || echo 'unknown')"
+NEW_VERSION=$(uvx bump-my-version show current_version)
+git commit -m "Bump version: $(git describe --tags --abbrev=0 HEAD~1) → v$NEW_VERSION"
 
 echo "🏷️ Creating tag..."
-NEW_VERSION=$(uvx bump-my-version show current_version)
 git tag v$NEW_VERSION
 
 echo "📚 Generating changelog..."
