@@ -9,7 +9,7 @@ A template to fast setup python projects
 Make sure that `uv` is installed, then run:
 
 ```bash
-uvx copier copy gh:ninanor/python-template my-awesome-python-project
+uvx --with copier_template_extensions copier copy gh:ninanor/python-template my-awesome-python-project --trust
 ```
 
 Answer the questions and you are done.
