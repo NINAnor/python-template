@@ -62,7 +62,7 @@ Please report any issues you have using the template, even if some documentation
 
 # Development
 Install development dependencies:
-- [pinact](https://github.com/suzuki-shunsuke/pinact/blob/main/INSTALL.md)
+- **pinact**: `./scripts/install-pinact.sh`
 
 ## Testing the template
 To test the template using copier-template-tester, run:
