@@ -2,6 +2,29 @@ Changelog
 =========
 
 
+v0.2.0 (2025-08-08)
+-------------------
+
+- Install pinact using aqua.
+- Fix release script.
+- Use ghcr.io/astral-sh/uv:python3.12-bookworm-slim.
+- Improve maintenance procedures.
+- Update actions with pinact.
+- Align project with Python template.
+- Improve tests.
+- Use pinact to pin GitHub actions.
+- Do not upload SARIF file on private repositories.
+- Revert "Initial import"
+  This reverts commit a7925f4ab1f785a111f6c677b115c13c42585f2e.
+- Update README.md.
+- Update .pre-commit-config.yaml for Python.
+- Update .pre-commit-config.yaml.
+- Initial import.
+- [ADD] section on how to run pre-commit (#35)
+- Docker ignore .env.
+- Fix compose watch.
+
+
 v0.1.5 (2025-03-07)
 -------------------
 
