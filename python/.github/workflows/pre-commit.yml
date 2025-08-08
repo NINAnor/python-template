@@ -21,11 +21,11 @@ jobs:
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc # v6.4.3
 
-      - name: Install deptry
-        run: uv tool install deptry
-
       - name: Install dependencies
         run: uv sync --frozen
+
+      - name: Install deptry
+        run: uv tool install deptry
 
       - name: Run pre-commit
         uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1

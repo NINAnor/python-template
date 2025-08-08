@@ -64,16 +64,16 @@ Check this [page](https://copier.readthedocs.io/en/stable/updating/) for more sp
 
 :sparkles: pre-commit doesn't change the functionality of your code
 
-To run pre-commit on your code, first install deptry:
+To run pre-commit on your code, first install dependencies:
 
 ```
-uv tool install deptry
+uv sync --dev
 ```
 
 Then run:
 
 ```
-uvx pre-commit run --all
+uv run pre-commit run --all
 ```
 
 ## Struggling with a template?

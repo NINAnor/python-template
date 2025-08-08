@@ -13,7 +13,7 @@ echo "🚀 Creating $VERSION_TYPE release..."
 
 echo "📝 Bumping version..."
 uvx bump-my-version bump $VERSION_TYPE
-uv sync
+uv sync --dev
 
 echo "📋 Adding changes to git..."
 git add .
