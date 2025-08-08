@@ -2,6 +2,28 @@ Changelog
 =========
 
 
+v0.2.1 (2025-08-08)
+-------------------
+
+Fixes
+-----
+
+- Release.sh commit message.
+- Remove deptry as template dependency.
+- Add deptry to python template.
+- Pre-commit errors.
+- Run pre-commit CI.
+- Install deptry.
+- New command to run copier with the new template.
+
+
+Other
+-----
+
+- Update pre-commit repos.
+- Improve README.md.
+
+
 v0.2.0 (2025-08-08)
 -------------------
 
