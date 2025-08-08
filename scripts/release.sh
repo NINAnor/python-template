@@ -24,7 +24,7 @@ NEW_VERSION=$(uvx bump-my-version show current_version)
 git tag v$NEW_VERSION
 
 echo "📚 Generating changelog..."
-uvx gitchangelog
+uvx --with pystache gitchangelog
 
 echo "📋 Amending commit with changelog..."
 git add CHANGELOG.txt
