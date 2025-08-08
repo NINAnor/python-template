@@ -73,7 +73,7 @@ uv tool install deptry
 Then run:
 
 ```
-pre-commit run --all
+uvx pre-commit run --all
 ```
 
 ## Struggling with a template?
