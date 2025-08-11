@@ -1,4 +1,6 @@
-"""Main module for the Python template."""
+#!/usr/bin/env python3
+
+"""Main script."""
 
 import logging
 import pathlib
