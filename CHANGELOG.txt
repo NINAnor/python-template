@@ -2,6 +2,33 @@ Changelog
 =========
 
 
+v0.2.5 (2025-08-11)
+-------------------
+
+Changes
+-------
+
+- Rearrange pyproject.toml sections.
+- Make main.py executable.
+
+
+Fixes
+-----
+
+- Fix license.
+- Add pre-commit as external requirement.
+- Deptry must be executed inside the venv.
+- Remove duplicated detect-secrets.
+- Pre-commit CI.
+
+
+Other
+-----
+
+- Chore: update dependencies.
+- Feat: add entrypoint.
+
+
 v0.2.4 (2025-08-08)
 -------------------
 
