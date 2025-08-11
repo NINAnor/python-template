@@ -59,7 +59,11 @@ repos:
     hooks:
       - id: uv-lock
 
-  - repo: https://github.com/fpgmaas/deptry.git
-    rev: "0.23.1"
+  - repo: local
     hooks:
       - id: deptry
+        name: deptry
+        entry: uv run deptry .
+        language: system
+        types: [python]
+        pass_filenames: false
