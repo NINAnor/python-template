@@ -1,12 +1,4 @@
-[dependency-groups]
-dev = [
-  "deptry",
-  {% if notebook %}
-    {% if notebook_type == "jupyter" %}
-  "ipykernel",
-    {% endif %}
-  {% endif %}
-]
+{% block extra %}{% endblock %}
 
 [project]
 authors = [
@@ -26,11 +18,20 @@ readme = "README.md"
 requires-python = ">=3.10"
 version = "0.1.0"
 
+{% block project_extra %}{% endblock %}
+
 [project.scripts]
 {{ project_slug }} = "main:start"
 
-{% block project_extra %}{% endblock %}
-{% block extra %}{% endblock %}
+[dependency-groups]
+dev = [
+  "deptry",
+  {% if notebook %}
+    {% if notebook_type == "jupyter" %}
+  "ipykernel",
+    {% endif %}
+  {% endif %}
+]
 
 [tool.ruff]
 fix = true
