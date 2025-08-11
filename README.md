@@ -64,16 +64,16 @@ Check this [page](https://copier.readthedocs.io/en/stable/updating/) for more sp
 
 :sparkles: pre-commit doesn't change the functionality of your code
 
-To run pre-commit on your code, first install dependencies:
+To run pre-commit on your code, first install pre-commit:
 
 ```
-uv sync --dev
+uv tool install pre-commit
 ```
 
 Then run:
 
 ```
-uv run pre-commit run --all
+pre-commit run --all
 ```
 
 ## Struggling with a template?
@@ -87,7 +87,7 @@ Install development dependencies:
 ## Testing the template
 To test the template using copier-template-tester, run:
 ```bash
-uvx pre-commit run -c .pre-commit-config-extra.yaml
+pre-commit run -c .pre-commit-config-extra.yaml
 ```
 
 ## Maintenance
