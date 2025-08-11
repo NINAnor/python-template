@@ -34,9 +34,16 @@ uv run --with marimo marimo edit
 {% endif %}
 
 ### Run
-To execute your software run:
-```
+To execute your software you have two options:
+
+**Option 1: Direct execution**
+```bash
 uv run main.py
+```
+
+**Option 2: Run as installed package**
+```bash
+uvx --from . {{ project_slug }}
 ```
 
 ### Development
