@@ -48,14 +48,18 @@ Press `Enter` to all questions, you'll get a simple Python project to start with
 **Keep in mind** that you can always change your answers, it's fine if you want to start with something simple and then for example you need Docker. Update the template, change your answers in the survey and you will get the code for that!
 
 ## How to update
-Basically you just need to run:
+You just need to run:
 ```
-uvx copier update --trust
+uvx --with copier_template_extensions copier update --trust --defaults
 ```
 
-You can now change your questions, in case you want to keep your previous answers use: `uvx copier update --trust --defaults`.
+In case you want to change your answers you can drop the `--defaults` flag:
+```
+uvx --with copier_template_extension copier update --trust`
+```
 
-This will try to check differences between your project and the template, if no conflicts are found you are done.
+In both cases, copier will try to check differences between your project and the template. It might be necessary to fix some conflicts: in this case it is up to the user to decide whenever to include or reject the improvements of the template into the repository.
+
 Check this [page](https://copier.readthedocs.io/en/stable/updating/) for more specific info about this feature.
 
 ## Running pre-commit
