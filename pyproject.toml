@@ -37,7 +37,7 @@ tag_message = "Bump version: {current_version} → {new_version}"
 tag_name = "v{new_version}"
 
 [tool.deptry]
-exclude = [".venv", "python/"]
+extend_exclude = ["python/"]
 
 [tool.deptry.per_rule_ignores]
 DEP001 = ["jinja2"]
