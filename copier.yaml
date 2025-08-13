@@ -16,6 +16,10 @@ project_slug:
   default: |-
     {{ project_name.lower().replace(' ', '_')}}
   help: "Name of the project for the machines, underscores instead of spaces"
+  validator: >-
+    {% if not project_slug | regex_search('^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$') %}
+    Invalid package name. Must start/end with letter or digit, contain only letters, numbers, dots, hyphens, underscores.
+    {% endif %}
 
 repo_org:
   type: str
